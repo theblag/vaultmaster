@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-require('dotenv').config({path: '../.env'});
+require('dotenv').config();
 
 const ALGORITHM = 'aes-256-cbc';
 const ENCRYPTION_KEY = Buffer.from(process.env.ENCRYPTION_KEY, 'hex'); // 32 bytes
