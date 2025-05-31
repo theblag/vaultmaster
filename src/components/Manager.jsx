@@ -24,7 +24,7 @@ const Manager = () => {
     const getPasswords = async () => {
         setLoading(true);
         try {
-            let req = await fetch(`https://vaultmaster.onrender.com?user_id=${user.email}`);
+            let req = await fetch(`${import.meta.env.VITE_BACKEND_URL}?user_id=${user.email}`);
             let passwords = await req.json();
             console.log("Passwords from backend:", passwords);
             setPasswordArray(passwords);
@@ -70,7 +70,7 @@ const Manager = () => {
                 user_id: user.email
             };
             if (isEditing) {
-                await fetch("https://vaultmaster.onrender.com", {
+                await fetch(import.meta.env.VITE_BACKEND_URL, {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ id: form.id }),
@@ -86,7 +86,7 @@ const Manager = () => {
                 setPasswordArray([...passwordArray, finalForm]);
             }
 
-            await fetch("https://vaultmaster.onrender.com", {
+            await fetch(import.meta.env.VITE_BACKEND_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(finalForm),
@@ -131,7 +131,7 @@ const Manager = () => {
     const deletePassword = async (id) => {
         let c = confirm("Are you sure you want to delete this password?");
         if (c) {
-            let res = await fetch("https://vaultmaster.onrender.com", {
+            let res = await fetch(import.meta.env.VITE_BACKEND_URL, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id })
