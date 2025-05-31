@@ -29,7 +29,7 @@ function SignIn() {
         await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: 'http://localhost:5173/auth/callback', // or your deployed callback URL
+                redirectTo: 'https://vaultmaster.vercel.app/auth/callback', // or your deployed callback URL
             },
         });
     };
