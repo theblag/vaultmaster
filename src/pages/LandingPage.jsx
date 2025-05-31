@@ -31,8 +31,8 @@ function App() {
           className="flex items-center justify-center text-center py-20 px-4"
         >
           <div className="relative z-10 rounded-xl p-8 w-full ">
-            <h1 className="text-5xl md:text-9xl font-bold mb-4">VAULTMASTER</h1>
-            <p className="text-xl text-slate-300 mt-14 mb-6">
+            <h1 className="text-[40px] md:text-9xl font-bold md:mb-4">VAULTMASTER</h1>
+            <p className="text-lg text-slate-300 mt-14 mb-6">
               Your all-in-one hub to store, manage, and generate passwords seamlessly
             </p>
             <button
@@ -99,12 +99,12 @@ function App() {
           <div className="relative max-w-2xl mx-auto mt-12">
             {/* Glowing Background Blobs */}
             <div className="absolute -top-3 -left-8 w-35 h-35 bg-blue-500 opacity-10 blur-2xl rounded-full animate-pulse z-0" />
-            {/* <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-600 opacity-10 blur-2xl rounded-full animate-pulse z-0" /> */}
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 block md:hidden bg-purple-600 opacity-10 blur-2xl rounded-full animate-pulse z-0" />
 
             {/* Glassmorphic Card */}
             <div className="relative z-10 bg-white/10 border border-white/20 backdrop-blur-lg rounded-2xl p-6 shadow-xl text-white">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-600/20 border border-blue-500/30 rounded-full shadow-inner">
+                <div className="p-3 hidden md:block bg-blue-600/20 border border-blue-500/30 rounded-full shadow-inner">
                   <Sparkles className="text-blue-300" size={24} />
                 </div>
                 <div>
@@ -122,7 +122,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <button onClick={handlePwdClick} className="cursor-pointer mt-10 bg-gradient-to-r from-blue-600/30 via-blue-500/40 to-purple-600/30 backdrop-blur-md border border-white/20 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:shadow-xl hover:bg-opacity-80 transition-all duration-300">
+              <button onClick={handlePwdClick} className="cursor-pointer mt-10 bg-gradient-to-r from-blue-600/30 via-indigo-500/40 to-purple-600/30 backdrop-blur-md border border-white/20 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:shadow-xl hover:bg-opacity-80 transition-all duration-300">
                 Try Now
               </button>
             </div>

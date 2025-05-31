@@ -12,16 +12,17 @@ const Manager = () => {
     const { user } = useAuth();
     console.log("email", user.email)
     const ref = useRef()
-    const ref2 = useRef()
     const passRef = useRef()
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [form, setForm] = useState({ site: "", url: "", username: "", password: "" });
     const [passwordArray, setPasswordArray] = useState([]);
     const [newPassword, setnewPassword] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
+    const [loading, setLoading] = useState(true);
 
 
     const getPasswords = async () => {
+        setLoading(true);
         try {
             let req = await fetch(`https://vaultmaster.onrender.com?user_id=${user.email}`);
             let passwords = await req.json();
@@ -30,6 +31,7 @@ const Manager = () => {
         } catch (err) {
             console.error("Error fetching passwords:", err);
         }
+        setLoading(false);
     };
 
 
@@ -52,15 +54,6 @@ const Manager = () => {
         }
 
     }
-    const showPassword2 = () => {
-        if (ref2.current.src.includes("icons/eyecross.png")) {
-            ref2.current.src = "icons/eye.png"
-        }
-        else {
-            ref2.current.src = "icons/eyecross.png"
-        }
-
-    }
 
     const savePassword = async (e) => {
         if (
@@ -74,29 +67,25 @@ const Manager = () => {
             const finalForm = {
                 ...form,
                 id: form.id || uuidv4(),
-                user_id: user.email // dynamically add user_id here
+                user_id: user.email
             };
             if (isEditing) {
-                // Editing: update DB and local array
                 await fetch("https://vaultmaster.onrender.com", {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ id: form.id }),
                 });
 
-                // Keep same ID for update
                 finalForm.id = form.id;
 
                 setPasswordArray(passwordArray.map((p) =>
                     p.id === form.id ? finalForm : p
                 ));
             } else {
-                // New password: create new ID
                 finalForm.id = uuidv4();
                 setPasswordArray([...passwordArray, finalForm]);
             }
 
-            // Save to backend
             await fetch("https://vaultmaster.onrender.com", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -209,6 +198,18 @@ const Manager = () => {
     };
     return (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={4000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <div className="absolute md:w-fit w-full md:right-0 mr-60">
                 {isVisible && (
                     <div className="flex justify-center items-center w-full">
@@ -238,18 +239,7 @@ const Manager = () => {
                 )}
             </div>
             <div className='flex flex-col justify-center items-center'>
-                <ToastContainer
-                    position="top-right"
-                    autoClose={4000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick={false}
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="dark"
-                />
+
 
                 {newPassword && (<><div className='md:w-auto w-[80%]'>
                     <h1 className='mb-5 text-2xl font-bold text-center'>Enter the Details</h1>
@@ -283,7 +273,13 @@ const Manager = () => {
             <div className="passwords mt-24">
                 <h1 className='md:text-3xl font-bold text-center mx-auto w-1/2 text-2xl md:w-1/2 mt-2 md:mt-10 md:mb-10 pb-3'>Your Passwords</h1>
             </div>
-            {passwordArray.length === 0 && <div className="flex flex-col items-center text-slate-400 mt-20">
+            {loading && <div className="flex flex-col text-xl items-center text-white mt-20">
+                <span className="text-lg">Loading passwords...</span>
+            </div>
+            }
+
+
+            {!loading && passwordArray.length === 0 && <div className="flex flex-col items-center text-slate-400 mt-20">
                 <FolderOpen size={48} className="mb-4" />
                 <p className="text-lg">No passwords saved yet</p>
             </div>}
