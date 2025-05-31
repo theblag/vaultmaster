@@ -10,7 +10,6 @@ import { div } from 'framer-motion/client';
 
 const Manager = () => {
     const { user } = useAuth();
-    console.log("email", user.email)
     const ref = useRef()
     const passRef = useRef()
     const [activeDropdown, setActiveDropdown] = useState(null);
@@ -26,7 +25,6 @@ const Manager = () => {
         try {
             let req = await fetch(`${import.meta.env.VITE_BACKEND_URL}?user_id=${user.email}`);
             let passwords = await req.json();
-            console.log("Passwords from backend:", passwords);
             setPasswordArray(passwords);
         } catch (err) {
             console.error("Error fetching passwords:", err);
