@@ -23,7 +23,7 @@ const Manager = () => {
 
     const getPasswords = async () => {
         try {
-            let req = await fetch(`http://localhost:3000/?user_id=${user.email}`);
+            let req = await fetch(`https://vaultmaster.onrender.com?user_id=${user.email}`);
             let passwords = await req.json();
             console.log("Passwords from backend:", passwords);
             setPasswordArray(passwords);
@@ -78,7 +78,7 @@ const Manager = () => {
             };
             if (isEditing) {
                 // Editing: update DB and local array
-                await fetch("http://localhost:3000/", {
+                await fetch("https://vaultmaster.onrender.com", {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ id: form.id }),
@@ -97,7 +97,7 @@ const Manager = () => {
             }
 
             // Save to backend
-            await fetch("http://localhost:3000/", {
+            await fetch("https://vaultmaster.onrender.com", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(finalForm),
@@ -142,7 +142,7 @@ const Manager = () => {
     const deletePassword = async (id) => {
         let c = confirm("Are you sure you want to delete this password?");
         if (c) {
-            let res = await fetch("http://localhost:3000/", {
+            let res = await fetch("https://vaultmaster.onrender.com", {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id })
