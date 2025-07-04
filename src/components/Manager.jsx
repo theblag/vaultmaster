@@ -271,9 +271,17 @@ const Manager = () => {
             <div className="passwords mt-24">
                 <h1 className='md:text-3xl font-bold text-center mx-auto w-1/2 text-2xl md:w-1/2 mt-2 md:mt-10 md:mb-10 pb-3'>Your Passwords</h1>
             </div>
-            {loading && <div className="flex flex-col text-xl items-center text-white mt-20">
-                <span className="text-lg">Loading passwords...</span>
-            </div>
+            {loading &&
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-[80%] m-10">
+                    {[...Array(6)].map((_, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="h-72 bg-gray-700/50 backdrop-blur-sm rounded-2xl border border-gray-700/30 animate-pulse"
+                        />
+                    ))}
+                </div>
             }
 
 
