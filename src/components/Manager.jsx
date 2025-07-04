@@ -285,7 +285,7 @@ const Manager = () => {
                 {passwordArray.length != 0 && passwordArray.map((item) => {
                     return (
 
-                        <div className="relative backdrop-blur-md  w-full mx-auto bg-white/10 border border-white/10 p-4 rounded-xl shadow hover:shadow-lg transition ">
+                        <div className="relative backdrop-blur-md overflow-hidden w-full mx-auto bg-white/10 border border-white/10 p-4 rounded-xl shadow hover:shadow-lg transition ">
                             <div className="absolute top-2 right-2">
                                 <div key={item.id} className="relative">
                                     <button
@@ -314,14 +314,14 @@ const Manager = () => {
                             </div>
 
 
-                            <h3 className="text-xl font-medium overflow-hidden ml-1 w-[80%] overflow-y-hidden h-10">{item.site}</h3>
-                            <p className="text-sm text-blue-400 mb-3 ml-1 overflow-hidden"><a href={item.url} target="_blank" rel="noopener noreferrer">{item.url}</a></p>
+                            <h3 className="text-xl font-medium overflow-hidden ml-1 md:w-[80%] overflow-y-hidden h-10">{item.site}</h3>
+                            <p className="text-sm text-blue-400 mb-3 ml-1 w-[80%] overflow-hidden"><a href={item.url} target="_blank" rel="noopener noreferrer">{item.url}</a></p>
                             <div className="relative mb-2 py-1.5 space-x-1 flex items-center border border-white/10 rounded-full">
-                                <span className="ml-4 w-[80%] overflow-hidden">
+                                <span className="ml-4 w-[70%] md:w-[75%] overflow-hidden">
                                     {item.username}
                                 </span>
 
-                                <div className='absolute left-[80%] mt-1 space-x-2 ml-5'>
+                                <div className='absolute left-[75%] md:left-[80%] mt-1 space-x-2 ml-5'>
 
                                     <button className="text-white/80 hover:text-white" >
                                         <Copy onClick={() => { copyText(item.username) }} size={16} className='cursor-pointer' />
@@ -329,15 +329,15 @@ const Manager = () => {
 
                                 </div>
                             </div>
-                            <div className="relative py-1 flex items-center space-x-2 border border-white/10 rounded-full">
+                            <div className="relative py-1 flex items-center space-x-1 border border-white/10 rounded-full">
                                 <input
                                     type={visiblePasswords[item.id] ? 'text' : 'password'}
                                     value={item.password}
                                     readOnly
-                                    className="px-2 py-1 mr-2 focus:outline-none "
+                                    className="px-3 py-1 mr-2 w-[75%] overflow-hidden focus:outline-none "
                                 />
-                                <div className="absolute ml-[72%] mt-1">
-                                    <button className="invert opacity-80 hover:opacity-100 px-3">
+                                <div className="absolute md:ml-[75%] ml-[70%] mt-1">
+                                    <button className="invert opacity-80 hover:opacity-100 px-2">
                                         <img width={16} onClick={() => toggleVisibility(item.id)} className='cursor-pointer' src={visiblePasswords[item.id] ? 'icons/eyecross.png' : 'icons/eye.png'} alt="" />
                                     </button>
                                     <button className="text-white/80 hover:text-white" >
