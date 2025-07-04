@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { useAuth } from '../context/AuthConnect';
 import { div } from 'framer-motion/client';
+import { motion } from 'framer-motion';
 
 
 
