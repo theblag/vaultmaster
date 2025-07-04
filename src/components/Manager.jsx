@@ -281,7 +281,7 @@ const Manager = () => {
                 <FolderOpen size={48} className="mb-4" />
                 <p className="text-lg">No passwords saved yet</p>
             </div>}
-            <div className='grid md:grid-cols-3 gap-4 w-[60%] mx-auto md:mt-5'>
+            <div className='grid md:grid-cols-3 gap-4 w-[80%] md:w-[60%] mx-auto md:mt-5'>
                 {passwordArray.length != 0 && passwordArray.map((item) => {
                     return (
 
@@ -314,7 +314,7 @@ const Manager = () => {
                             </div>
 
 
-                            <h3 className="text-xl font-medium overflow-hidden ml-1 md:w-[80%] overflow-y-hidden h-10">{item.site}</h3>
+                            <h3 className="text-xl font-medium overflow-hidden ml-1 w-[80%] md:w-[80%] overflow-y-hidden h-10">{item.site}</h3>
                             <p className="text-sm text-blue-400 mb-3 ml-1 w-[80%] overflow-hidden"><a href={item.url} target="_blank" rel="noopener noreferrer">{item.url}</a></p>
                             <div className="relative mb-2 py-1.5 space-x-1 flex items-center border border-white/10 rounded-full">
                                 <span className="ml-4 w-[70%] md:w-[75%] overflow-hidden">
