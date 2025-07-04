@@ -281,7 +281,7 @@ const Manager = () => {
                 <FolderOpen size={48} className="mb-4" />
                 <p className="text-lg">No passwords saved yet</p>
             </div>}
-            <div className='grid md:grid-cols-3 gap-4 w-[80%] md:w-[60%] mx-auto md:mt-5'>
+            <div className='grid md:grid-cols-3 mb-10 gap-4 w-[80%] md:w-[60%] mx-auto md:mt-5'>
                 {passwordArray.length != 0 && passwordArray.map((item) => {
                     return (
 
@@ -299,11 +299,11 @@ const Manager = () => {
 
                                     {activeDropdown === item.id && (
                                         <div className="flex flex-col text-slate-950 absolute right-2 top-10 w-32 bg-white border border-slate-200 rounded-md shadow-lg z-10">
-                                            <button onClick={() => editPassword(item.id)} className="px-4 py-2 text-sm text-left hover:bg-slate-100 flex items-center">
+                                            <button onClick={() => editPassword(item.id)} className="px-4 py-2 rounded-md text-sm text-left hover:bg-slate-100 flex items-center">
                                                 <Edit size={16} className="mr-2" /> Edit
                                             </button>
 
-                                            <button onClick={() => { deletePassword(item.id) }} className="px-4 py-2 text-sm text-left hover:bg-slate-100 text-red-600 flex items-center">
+                                            <button onClick={() => { deletePassword(item.id) }} className="px-4 py-2 rounded-md text-sm text-left hover:bg-slate-100 text-red-600 flex items-center">
                                                 <Trash size={16} className="mr-2" /> Delete
                                             </button>
                                         </div>
