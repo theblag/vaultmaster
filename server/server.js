@@ -13,7 +13,15 @@ const url = process.env.MONGODB_URI;
 const dbName = 'vaultmaster';
 
 app.use(bodyparser.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',           
+    'https://vaultmaster.vercel.app'   
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 async function startServer() {
   try {
