@@ -273,7 +273,7 @@ const Manager = () => {
                 <h1 className='md:text-3xl font-bold text-center mx-auto w-1/2 text-2xl md:w-1/2 mt-2 md:mt-10 md:mb-10 pb-3'>Your Passwords</h1>
             </div>
             {loading &&
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-56 m-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:mx-56 m-10">
                     {[...Array(6)].map((_, i) => (
                         <motion.div
                             key={i}

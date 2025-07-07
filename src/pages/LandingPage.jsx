@@ -96,7 +96,7 @@ function App() {
             Password Manager
           </h1>
 
-          <div className="relative max-w-2xl mx-auto mt-12">
+          <div className="relative max-w-2xl mx-auto mt-12 overflow-hidden">
             {/* Glowing Background Blobs */}
             <div className="absolute -top-3 -left-8 w-35 h-35 bg-blue-500 opacity-10 blur-2xl rounded-full animate-pulse z-0" />
             <div className="absolute -bottom-10 -right-10 w-40 h-40 block md:hidden bg-purple-600 opacity-10 blur-2xl rounded-full animate-pulse z-0" />
