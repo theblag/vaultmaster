@@ -93,7 +93,7 @@ function App() {
           className=" text-center py-20 px-4"
         >
           <h1 className='font-bold text-5xl'>
-            Password Manager
+            Password Generator
           </h1>
 
           <div className="relative max-w-2xl mx-auto mt-12 overflow-hidden">
